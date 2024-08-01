@@ -43,11 +43,20 @@ public class User implements UserInterface {
                 message.setStatus(MessageStatus.RECEIVED);
             }
         }
-        public void readMessage (Message message){
-            if (messages.contains(message) && message.getStatus() == MessageStatus.RECEIVED) {
-                message.setStatus(MessageStatus.READ);
-            }
+    public void readMessage(Message message) {
+        if (messages.contains(message)) {
+            message.setStatus(MessageStatus.READ);
+        } else {
+            System.out.println("Message not found.");
         }
     }
+    public void printAllMessages() {
+        System.out.println(name + "'s messages:");
+        for (Message message : messages) {
+            System.out.println("From: " + message.getSender().getName() + " - Status: " + message.getStatus() + " - Text: " + message.getText());
+        }
+    }
+}
+
 
 
